@@ -1,18 +1,9 @@
 import java.util.*;
 
 public class test{
-	/*public static void main(String args[]){
-		int[] arr = new int[30];
-		Random a = new Random();
-		for(int i = 0; i<30; i++){
-			arr[i] = a.nextInt(100);
-		}
-		heapsort(arr);
-		System.out.println(Arrays.toString(arr));
-	}*/
 
 	public static void main(String args[]){
-		FFGraph graph = new FFGraph();
+		MyGraph graph = new MyGraph();
 
 		graph.addVertex("a");
 		graph.addVertex("b");
@@ -32,13 +23,20 @@ public class test{
 		graph.addEdge("f", "e", 4.0);
 		graph.addEdge("g", "e", 2.0);
 
+		//tests the ford-fulkerson algorithm
 		FordFulkerson alg = new FordFulkerson(graph, "a", "e");
 		alg.executeFF();
-		/*System.out.println("The shortest distance from 'a' is:");
-		for(String name : alg.getVisited()){
-			System.out.println(name + " " + alg.getDistance().get(name));
+		System.out.println();
+		
+		//tests the Dijkstra algorithm
+		String source = "a";
+		
+		Dijkstra alg1 = new Dijkstra();
+		alg1.executeDijkstra(graph, source);
+		System.out.println("The shortest distance from " + source + " is:");
+		for(String name : alg1.getVisited()){
+			System.out.println(name + " " + alg1.getDistance().get(name));
 		}
-		System.out.println(alg.getVisited().size());*/
 	}
 	
 	// #### QUICKSORT ####
